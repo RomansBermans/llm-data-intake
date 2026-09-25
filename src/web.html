@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recruitment Intake Assistant</title>
+<style>
+body {font: 17px system-ui; max-width: 760px; margin: 40px auto; padding: 0 20px; color: #20302d; background: #f7faf8}
+article {padding: 16px; margin: 12px 0; background: white; border: 1px solid #d6e1db; border-radius: 10px; white-space: pre-wrap}
+article.agent {background: #edf4f0}
+article.candidate {background: #eef2f8; border-color: #d7dfeb}
+textarea {box-sizing: border-box; width: 100%; padding: 12px; font: inherit}
+button {padding: 10px 20px; margin: 10px 0; font: inherit; cursor: pointer}
+details {margin-top: 20px}
+summary {cursor: pointer; font-weight: 600}
+#summary {margin-top: 12px; padding: 24px; background: white; border: 1px solid #d6e1db; border-radius: 10px; line-height: 1.6; overflow-wrap: anywhere}
+#summary h2 {font-size: 1.3rem; margin: 0 0 16px}
+#summary h3 {font-size: 1rem; margin: 24px 0 8px; padding-top: 16px; border-top: 1px solid #e4ebe7}
+#summary p {margin: 8px 0}
+#summary blockquote {margin: 12px 0; padding: 10px 16px; border-left: 3px solid #a6bdb1; background: #f3f7f5; color: #475c53}
+#summary p:last-child {margin-top: 24px; font-size: .9rem; color: #596b62}
+</style>
+<h1>Recruitment Intake Assistant</h1>
+<p>Answer in your own words. You can review and correct your details before confirming.</p>
+<p id="status" role="status"></p>
+<section id="history" aria-label="Conversation" aria-live="polite"></section>
+<form><textarea id="message" aria-label="Your reply" placeholder="Your reply" rows="3" required maxlength="8000"></textarea><button>Send</button></form>
+<details><summary>Recruiter Summary</summary><div id="summary"></div></details>
+<script>
+const token = location.hash.slice(1);
+const form = document.querySelector('form'), input = document.querySelector('textarea'), button = document.querySelector('button');
+const status = document.querySelector('#status');
+async function request(path, message) {
+  const response = await fetch(path, {method: message === undefined ? 'GET' : 'POST',
+    headers: {'X-Session-Token': token, 'Content-Type': 'application/json'},
+    body: message === undefined ? undefined : JSON.stringify({message})});
+  if (!response.ok) throw new Error('Could not load the session. Check the terminal link and try again.');
+  const data = await response.json();
+  document.querySelector('#history').replaceChildren(...data.history.map(turn => {
+    const element = document.createElement('article');
+    element.className = turn.author === 'agent' ? 'agent' : 'candidate';
+    element.textContent = `${turn.author === 'agent' ? 'Agent' : 'Candidate'}: ${turn.message}`;
+    return element;
+  }));
+  document.querySelector('#summary').innerHTML = data.summary_html;
+  const ended = ['complete', 'stopped'].includes(data.state);
+  input.disabled = button.disabled = ended;
+  status.textContent = ended ? `Session ${data.state}. Your record has been saved.` : '';
+}
+form.addEventListener('submit', async event => {
+  event.preventDefault();
+  if (button.disabled) return;
+  input.disabled = button.disabled = true;
+  button.textContent = 'Sending...';
+  status.textContent = '';
+  try {await request('/message', input.value); input.value = ''; input.focus();}
+  catch (error) {status.textContent = error.message; input.disabled = button.disabled = false;}
+  finally {button.textContent = 'Send';}
+});
+input.addEventListener('keydown', event => {
+  if (event.key === 'Enter' && !event.shiftKey && !event.isComposing) {
+    event.preventDefault();
+    if (!button.disabled) form.requestSubmit();
+  }
+});
+request('/session').catch(error => {status.textContent = error.message;});
+</script>
+</html>

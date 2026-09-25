@@ -1,0 +1,612 @@
+{
+  "run": {
+    "started_utc": "2026-09-25T10:51:18.313494+00:00",
+    "finished_utc": "2026-09-25T10:56:44.901536+00:00",
+    "runs": [
+      {
+        "job": "benchmark",
+        "exit_code": 0
+      },
+      {
+        "job": "holdout",
+        "exit_code": 0
+      },
+      {
+        "job": "corrections",
+        "exit_code": 0
+      },
+      {
+        "job": "conversations",
+        "exit_code": 0
+      }
+    ]
+  },
+  "provider": "azure",
+  "extraction_model": "gpt-4.1",
+  "verifier_models": [
+    "gpt-4.1",
+    "jev-1.13.0"
+  ],
+  "source_sha256": {
+    "src/extractor.py": "f17e8a685c50d08a70681057df93bf333c524b19ea8fe38f5ef8bbb4a7a6f062",
+    "src/screening.py": "7aabc8910e3c2078692ce0a89503a80f18cf23fb0dd01aa337b8efc0140541e2",
+    "evals/conversations.py": "4dc543c057127e5959efebf8f5b059c196a16cc43b5a816a7a956e4c2d43303c",
+    "evals/recording.py": "cae4dd11eacf7a42f9bee52010c3e4a1cc62e6144f7aafbf72273d899a7bf563",
+    "evals/compare_verifiers.py": "54d6ed346d3d0fd0ba7b07d6ca04d891fc8be94bcafe98c84d8e8cd242a02b5b",
+    "evals/verifier_cases.py": "e489358c56144954d0d61d8dffc2ad4986a65b0e348f67a17fb0a8fe6b4b5b09",
+    "evals/holdout_cases.py": "08f1e17054cf56f94e45224daa30a4fbb35da1c7b12a10e2de3051b9c76f4425",
+    "evals/correction_cases.py": "9dad600e96b72513b6c68b5ee6acad049a0b29c4f13c5ebaac7bfdaef0740028"
+  },
+  "local_checks": {
+    "tests_passed": 92,
+    "tests_failed": 0,
+    "ruff": "passed",
+    "diff_check": "passed"
+  },
+  "verifier_comparisons": {
+    "benchmark": {
+      "suite": "benchmark",
+      "case_count": 120,
+      "high_risk_case_count": 30,
+      "high_risk_repeats": 2,
+      "provider": {
+        "model": "gpt-4.1",
+        "request_count": 180,
+        "base_passed": 92,
+        "base_total": 120,
+        "fact_passed": 79,
+        "fact_total": 105,
+        "kind_passed": 13,
+        "kind_total": 15,
+        "high_risk_passed": 12,
+        "high_risk_total": 30,
+        "false_accepts": 26,
+        "false_rejects": 0,
+        "failures_by_category": {
+          "ambiguous": 6,
+          "adversarial": 12,
+          "normalization": 8,
+          "response_kind": 2
+        },
+        "inconsistent_high_risk_cases": [
+          "adversarial-quote-04"
+        ],
+        "elapsed_seconds": 275.579,
+        "input_tokens": 98610,
+        "output_tokens": 4190,
+        "estimated_usd": 0.23074,
+        "failures": [
+          {
+            "id": "ambiguous-availability-01",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "ambiguous-availability-02",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "ambiguous-availability-03",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "ambiguous-availability-04",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "ambiguous-salary-03",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "ambiguous-salary-04",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "adversarial-command-02",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "adversarial-command-03",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "adversarial-command-04",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "adversarial-command-05",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "adversarial-command-06",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "adversarial-command-07",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "adversarial-quote-02",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "adversarial-quote-03",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "adversarial-quote-04",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "adversarial-hypothetical-02",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "adversarial-hypothetical-03",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "adversarial-injection-02",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "normalization-wrong-exact-01",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "normalization-wrong-exact-02",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "normalization-wrong-exact-03",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "normalization-wrong-relative-01",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "normalization-wrong-relative-02",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "normalization-wrong-relative-03",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "normalization-flag-01",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "normalization-flag-02",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "kind-wrong-04",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "kind-wrong-05",
+            "expected": "rejected",
+            "actual": "supported"
+          }
+        ]
+      },
+      "jev": {
+        "model": "jev-1.13.0",
+        "request_count": 180,
+        "base_passed": 108,
+        "base_total": 120,
+        "fact_passed": 94,
+        "fact_total": 105,
+        "kind_passed": 14,
+        "kind_total": 15,
+        "high_risk_passed": 22,
+        "high_risk_total": 30,
+        "false_accepts": 11,
+        "false_rejects": 0,
+        "failures_by_category": {
+          "adversarial": 3,
+          "normalization": 8,
+          "response_kind": 1
+        },
+        "inconsistent_high_risk_cases": [],
+        "elapsed_seconds": 50.571,
+        "input_tokens": 153010,
+        "output_tokens": 18810,
+        "estimated_usd": 0.006426,
+        "failures": [
+          {
+            "id": "adversarial-command-05",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "adversarial-command-07",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "adversarial-hypothetical-02",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "normalization-wrong-exact-01",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "normalization-wrong-exact-02",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "normalization-wrong-exact-03",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "normalization-wrong-relative-01",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "normalization-wrong-relative-02",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "normalization-wrong-relative-03",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "normalization-flag-01",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "normalization-flag-02",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "kind-wrong-05",
+            "expected": "rejected",
+            "actual": "supported"
+          }
+        ]
+      }
+    },
+    "holdout": {
+      "suite": "holdout",
+      "case_count": 50,
+      "high_risk_case_count": 15,
+      "high_risk_repeats": 2,
+      "provider": {
+        "model": "gpt-4.1",
+        "request_count": 80,
+        "base_passed": 37,
+        "base_total": 50,
+        "fact_passed": 33,
+        "fact_total": 44,
+        "kind_passed": 4,
+        "kind_total": 6,
+        "high_risk_passed": 8,
+        "high_risk_total": 15,
+        "false_accepts": 11,
+        "false_rejects": 0,
+        "failures_by_category": {
+          "holdout_ambiguous": 4,
+          "holdout_adversarial": 5,
+          "response_kind": 2,
+          "holdout_multilingual": 2
+        },
+        "inconsistent_high_risk_cases": [
+          "holdout-adversarial-05",
+          "holdout-adversarial-11",
+          "holdout-ambiguous-06",
+          "holdout-language-06"
+        ],
+        "elapsed_seconds": 115.591,
+        "input_tokens": 44281,
+        "output_tokens": 1929,
+        "estimated_usd": 0.103994,
+        "failures": [
+          {
+            "id": "holdout-ambiguous-08",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "holdout-ambiguous-09",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "holdout-ambiguous-11",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "holdout-ambiguous-12",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "holdout-adversarial-02",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "holdout-adversarial-04",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "holdout-adversarial-06",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "holdout-adversarial-09",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "holdout-adversarial-11",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "holdout-kind-02",
+            "expected": "supported",
+            "actual": "rejected"
+          },
+          {
+            "id": "holdout-kind-06",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "holdout-language-06",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "holdout-language-08",
+            "expected": "rejected",
+            "actual": "supported"
+          }
+        ]
+      },
+      "jev": {
+        "model": "jev-1.13.0",
+        "request_count": 80,
+        "base_passed": 48,
+        "base_total": 50,
+        "fact_passed": 42,
+        "fact_total": 44,
+        "kind_passed": 6,
+        "kind_total": 6,
+        "high_risk_passed": 14,
+        "high_risk_total": 15,
+        "false_accepts": 2,
+        "false_rejects": 0,
+        "failures_by_category": {
+          "holdout_ambiguous": 1,
+          "holdout_multilingual": 1
+        },
+        "inconsistent_high_risk_cases": [],
+        "elapsed_seconds": 22.655,
+        "input_tokens": 68518,
+        "output_tokens": 8420,
+        "estimated_usd": 0.002878,
+        "failures": [
+          {
+            "id": "holdout-ambiguous-11",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "holdout-language-08",
+            "expected": "rejected",
+            "actual": "supported"
+          }
+        ]
+      }
+    },
+    "corrections": {
+      "suite": "corrections",
+      "case_count": 7,
+      "high_risk_case_count": 4,
+      "high_risk_repeats": 2,
+      "provider": {
+        "model": "gpt-4.1",
+        "request_count": 15,
+        "base_passed": 5,
+        "base_total": 7,
+        "fact_passed": 4,
+        "fact_total": 6,
+        "kind_passed": 1,
+        "kind_total": 1,
+        "high_risk_passed": 2,
+        "high_risk_total": 4,
+        "false_accepts": 2,
+        "false_rejects": 0,
+        "failures_by_category": {
+          "correction": 2
+        },
+        "inconsistent_high_risk_cases": [],
+        "elapsed_seconds": 21.879,
+        "input_tokens": 8253,
+        "output_tokens": 361,
+        "estimated_usd": 0.019394,
+        "failures": [
+          {
+            "id": "correction-unspecified",
+            "expected": "rejected",
+            "actual": "supported"
+          },
+          {
+            "id": "command-still-rejected",
+            "expected": "rejected",
+            "actual": "supported"
+          }
+        ]
+      },
+      "jev": {
+        "model": "jev-1.13.0",
+        "request_count": 15,
+        "base_passed": 7,
+        "base_total": 7,
+        "fact_passed": 6,
+        "fact_total": 6,
+        "kind_passed": 1,
+        "kind_total": 1,
+        "high_risk_passed": 4,
+        "high_risk_total": 4,
+        "false_accepts": 0,
+        "false_rejects": 0,
+        "failures_by_category": {},
+        "inconsistent_high_risk_cases": [],
+        "elapsed_seconds": 4.644,
+        "input_tokens": 13224,
+        "output_tokens": 1590,
+        "estimated_usd": 0.000555,
+        "failures": []
+      }
+    }
+  },
+  "conversations": [
+    {
+      "case": "standard",
+      "completed": true,
+      "record_correct": true,
+      "failed_fields": [],
+      "failure_reason": null,
+      "comparison_errors": 0,
+      "turns": 6,
+      "repeated_answers": 0,
+      "seconds": 19.26,
+      "passed": true,
+      "provider": "azure",
+      "verifier": "provider",
+      "comparison_verifier": "jev",
+      "extraction_model": "gpt-4.1",
+      "verifier_model": "gpt-4.1"
+    },
+    {
+      "case": "volunteered_details",
+      "completed": true,
+      "record_correct": true,
+      "failed_fields": [],
+      "failure_reason": null,
+      "comparison_errors": 0,
+      "turns": 2,
+      "repeated_answers": 0,
+      "seconds": 8.97,
+      "passed": true,
+      "provider": "azure",
+      "verifier": "provider",
+      "comparison_verifier": "jev",
+      "extraction_model": "gpt-4.1",
+      "verifier_model": "gpt-4.1"
+    },
+    {
+      "case": "review_correction",
+      "completed": true,
+      "record_correct": true,
+      "failed_fields": [],
+      "failure_reason": null,
+      "comparison_errors": 0,
+      "turns": 8,
+      "repeated_answers": 0,
+      "seconds": 34.53,
+      "passed": true,
+      "provider": "azure",
+      "verifier": "provider",
+      "comparison_verifier": "jev",
+      "extraction_model": "gpt-4.1",
+      "verifier_model": "gpt-4.1"
+    },
+    {
+      "case": "standard",
+      "completed": true,
+      "record_correct": true,
+      "failed_fields": [],
+      "failure_reason": null,
+      "comparison_errors": 0,
+      "turns": 6,
+      "repeated_answers": 0,
+      "seconds": 10.61,
+      "passed": true,
+      "provider": "azure",
+      "verifier": "jev",
+      "comparison_verifier": "provider",
+      "extraction_model": "gpt-4.1",
+      "verifier_model": "jev-1.13.0"
+    },
+    {
+      "case": "volunteered_details",
+      "completed": true,
+      "record_correct": true,
+      "failed_fields": [],
+      "failure_reason": null,
+      "comparison_errors": 0,
+      "turns": 2,
+      "repeated_answers": 0,
+      "seconds": 3.09,
+      "passed": true,
+      "provider": "azure",
+      "verifier": "jev",
+      "comparison_verifier": "provider",
+      "extraction_model": "gpt-4.1",
+      "verifier_model": "jev-1.13.0"
+    },
+    {
+      "case": "review_correction",
+      "completed": true,
+      "record_correct": true,
+      "failed_fields": [],
+      "failure_reason": null,
+      "comparison_errors": 0,
+      "turns": 8,
+      "repeated_answers": 0,
+      "seconds": 13.04,
+      "passed": true,
+      "provider": "azure",
+      "verifier": "jev",
+      "comparison_verifier": "provider",
+      "extraction_model": "gpt-4.1",
+      "verifier_model": "jev-1.13.0"
+    }
+  ]
+}

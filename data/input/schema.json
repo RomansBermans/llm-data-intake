@@ -1,0 +1,262 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Candidate Screening Record",
+  "type": "object",
+  "required": [
+    "role",
+    "experience",
+    "availability",
+    "salary_expectation",
+    "work_authorization",
+    "candidate_confirmation"
+  ],
+  "properties": {
+    "role": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "confirmed",
+        "evidence",
+        "confirmation_evidence"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "confirmed": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "evidence": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "confirmation_evidence": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "experience": {
+      "type": "object",
+      "required": [
+        "years",
+        "skills",
+        "evidence"
+      ],
+      "properties": {
+        "years": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence": {
+          "type": "object",
+          "required": [
+            "years",
+            "skills"
+          ],
+          "properties": {
+            "years": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "skills": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "availability": {
+      "type": "object",
+      "required": [
+        "date",
+        "evidence",
+        "interpretation"
+      ],
+      "properties": {
+        "date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "evidence": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "interpretation": {
+          "type": "object",
+          "required": [
+            "method",
+            "reference_date",
+            "confirmation_evidence"
+          ],
+          "properties": {
+            "method": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "exact_date",
+                "relative_date",
+                null
+              ]
+            },
+            "reference_date": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "date"
+            },
+            "confirmation_evidence": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "work_authorization": {
+      "type": "object",
+      "required": [
+        "authorized",
+        "evidence"
+      ],
+      "properties": {
+        "authorized": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "evidence": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "salary_expectation": {
+      "type": "object",
+      "required": [
+        "min",
+        "max",
+        "currency",
+        "evidence"
+      ],
+      "properties": {
+        "min": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "max": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "currency": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "salary_alignment": {
+      "type": "object",
+      "required": [
+        "accepted_below_expectation",
+        "evidence"
+      ],
+      "properties": {
+        "accepted_below_expectation": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "evidence": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "candidate_confirmation": {
+      "type": "object",
+      "required": [
+        "confirmed",
+        "evidence"
+      ],
+      "properties": {
+        "confirmed": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "evidence": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

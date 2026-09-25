@@ -1,0 +1,42 @@
+[
+  {
+    "id": "software-engineer",
+    "title": "Software Engineer",
+    "location": "Spain",
+    "salary_range": {
+      "min": 50000,
+      "max": 80000,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "data-engineer",
+    "title": "Data Engineer",
+    "location": "Spain",
+    "salary_range": {
+      "min": 55000,
+      "max": 85000,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "product-engineer",
+    "title": "Product Engineer",
+    "location": "Remote - Spain",
+    "salary_range": {
+      "min": 45000,
+      "max": 75000,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "carpenter",
+    "title": "Carpenter",
+    "location": "Spain",
+    "salary_range": {
+      "min": 30000,
+      "max": 50000,
+      "currency": "EUR"
+    }
+  }
+]
